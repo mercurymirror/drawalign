@@ -77,7 +77,7 @@ export default async function HomePage({ params }: Props) {
       {home.testimonials && <HomeTestimonials {...home.testimonials} />}
       {home.logos && <HomeLogos {...home.logos} />}
       {home.teamPhoto && (
-        <section className="bg-primary overflow-hidden">
+        <section className="bg-primary overflow-hidden lg:px-28">
           <StrapiImage image={home.teamPhoto} className="w-full" />
         </section>
       )}

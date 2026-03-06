@@ -144,23 +144,6 @@ export function HomeHero({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Bordure extérieure complète du ring (union Path1 + Path2) */}
-      <svg
-        width="0"
-        height="0"
-        style={{ position: "absolute" }}
-        aria-hidden="true"
-      >
-        <defs>
-          <clipPath id="hero-clip" clipPathUnits="objectBoundingBox">
-            <path
-              transform="scale(0.001877, 0.002445)"
-              d="M388.276 0C561.911 96.3721 573.318 297.984 451.957 394.474C439.496 392.538 427.049 390.588 414.666 388.636C407.62 395.831 399.989 402.64 391.777 409C221.472 383.223 53.598 355.467 4.22368 339.481C-0.179893 338.056 -1.32551 333.501 1.66802 330.376C31.1307 299.624 169.371 156.001 324.902 5.42285C337.639 12.3094 349.544 19.7222 360.628 27.5859C369.765 18.4345 378.988 9.2305 388.276 0Z"
-            />
-          </clipPath>
-        </defs>
-      </svg>
-
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 xl:grid-cols-[7fr_5fr]">
         {/* Colonne gauche */}
         <div>
@@ -182,22 +165,7 @@ export function HomeHero({
         {/* Colonne droite */}
         {image && (
           <div className="relative md:mx-18 lg:mx-0 aspect-533/409">
-            {/* Photo clippée — couche arrière, bouge moins */}
-            <StrapiImage
-              image={image}
-              className="relative w-full h-full object-cover"
-              style={{ clipPath: "url(#hero-clip)" }}
-              fetchPriority="high"
-            />
-            {/* Ring — statique, aligné avec la photo */}
-            <Image
-              src="/shapes/hero.svg"
-              alt=""
-              aria-hidden={true}
-              width={533}
-              height={409}
-              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-            />
+            <StrapiImage image={image} fill className="object-contain" />
             {/* Bulles — flottent au-dessus avec le curseur */}
             {bubbles && bubbles.length > 0 && (
               <div className="absolute inset-0">
@@ -225,7 +193,10 @@ export function HomeHero({
                       <div
                         style={
                           isMobile
-                            ? { transform: "scale(0.7)", transformOrigin: "left center" }
+                            ? {
+                                transform: "scale(0.7)",
+                                transformOrigin: "left center",
+                              }
                             : undefined
                         }
                       >
