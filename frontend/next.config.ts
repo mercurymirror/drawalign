@@ -4,6 +4,9 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const strapiUrl = new URL(process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337");
+const strapiMediaUrl = process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL
+	? new URL(process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL)
+	: null;
 
 const nextConfig: NextConfig = {
 	async headers() {
@@ -29,6 +32,11 @@ const nextConfig: NextConfig = {
 				port: strapiUrl.port,
 				pathname: "/uploads/**",
 			},
+			...(strapiMediaUrl ? [{
+				protocol: strapiMediaUrl.protocol.replace(":", "") as "http" | "https",
+				hostname: strapiMediaUrl.hostname,
+				pathname: "/**",
+			}] : []),
 		],
 		dangerouslyAllowLocalIP: process.env.NODE_ENV === "development",
 	},
