@@ -15,17 +15,27 @@
     "logo": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "socialLinks": {
       "type": "component",
-      "repeatable": true,
-      "component": "elements.social-link"
+      "component": "elements.social-link",
+      "repeatable": true
     },
     "legalLinks": {
       "type": "component",
-      "repeatable": true,
-      "component": "elements.nav-item"
+      "component": "elements.nav-item",
+      "repeatable": true
+    },
+    "logo_esf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

@@ -5,16 +5,21 @@
   },
   "options": {},
   "attributes": {
-    "title": {
+    "eyebrow": {
       "type": "string"
     },
-    "eyebrow": {
+    "title": {
       "type": "string"
     },
     "items": {
       "type": "component",
       "component": "home.solution-card",
       "repeatable": true
+    },
+    "button": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
     }
   },
   "config": {}

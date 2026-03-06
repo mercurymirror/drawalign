@@ -13,17 +13,34 @@
       "type": "string"
     },
     "description": {
-      "type": "blocks"
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
     },
     "image": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "cta": {
+    "features": {
       "type": "component",
-      "component": "elements.cta-link",
-      "repeatable": false
+      "component": "elements.list-item",
+      "repeatable": true
     }
   }
 }

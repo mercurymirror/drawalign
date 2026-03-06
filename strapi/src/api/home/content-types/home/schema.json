@@ -110,15 +110,17 @@
       "component": "home.logos-section",
       "repeatable": false
     },
-    "ctaFinal": {
-      "type": "component",
+    "teamPhoto": {
+      "type": "media",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "home.cta-final",
-      "repeatable": false
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

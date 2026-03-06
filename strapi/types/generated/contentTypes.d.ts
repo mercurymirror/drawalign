@@ -494,6 +494,12 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    ctaBanner: Schema.Attribute.Component<'shared.cta-banner', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     footer: Schema.Attribute.Component<'shared.footer', false>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::global.global'>;
@@ -540,12 +546,6 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    ctaFinal: Schema.Attribute.Component<'home.cta-final', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     expertises: Schema.Attribute.Component<'home.expertises-section', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -587,6 +587,12 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
       }>;
     siteName: Schema.Attribute.String;
     solutions: Schema.Attribute.Component<'home.solutions-section', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teamPhoto: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

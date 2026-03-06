@@ -36,6 +36,16 @@
       "component": "elements.nav-item",
       "repeatable": true
     },
+    "ctaBanner": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.cta-banner",
+      "repeatable": false
+    },
     "footer": {
       "type": "component",
       "component": "shared.footer",

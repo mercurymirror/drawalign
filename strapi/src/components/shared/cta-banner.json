@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_cta_banners",
+  "info": {
+    "displayName": "CtaBanner"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "cta": {
+      "type": "component",
+      "component": "blocks.cta",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

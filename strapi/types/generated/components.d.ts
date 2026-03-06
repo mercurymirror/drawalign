@@ -133,6 +133,18 @@ export interface ElementsCtaLink extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsListItem extends Struct.ComponentSchema {
+  collectionName: 'components_elements_list_items';
+  info: {
+    description: '';
+    displayName: 'List Item';
+    icon: 'bulletList';
+  };
+  attributes: {
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ElementsNavItem extends Struct.ComponentSchema {
   collectionName: 'components_elements_nav_items';
   info: {
@@ -277,9 +289,12 @@ export interface HomeSolutionCard extends Struct.ComponentSchema {
     displayName: 'Solution Card';
   };
   attributes: {
-    cta: Schema.Attribute.Component<'elements.cta-link', false>;
-    description: Schema.Attribute.Blocks;
+    background: Schema.Attribute.Enumeration<['primary', 'secondary']> &
+      Schema.Attribute.DefaultTo<'primary'>;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.Component<'elements.list-item', true>;
     image: Schema.Attribute.Media<'images'>;
+    logo: Schema.Attribute.Media<'images'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String;
   };
@@ -291,6 +306,7 @@ export interface HomeSolutionsSection extends Struct.ComponentSchema {
     displayName: 'Solutions Section';
   };
   attributes: {
+    button: Schema.Attribute.Component<'elements.cta-link', false>;
     eyebrow: Schema.Attribute.String;
     items: Schema.Attribute.Component<'home.solution-card', true>;
     title: Schema.Attribute.String;
@@ -320,8 +336,6 @@ export interface HomeTestimonialItem extends Struct.ComponentSchema {
   };
   attributes: {
     author: Schema.Attribute.String & Schema.Attribute.Required;
-    avatar: Schema.Attribute.Media<'images'>;
-    company: Schema.Attribute.String;
     quote: Schema.Attribute.Text & Schema.Attribute.Required;
     role: Schema.Attribute.String;
   };
@@ -333,8 +347,20 @@ export interface HomeTestimonialsSection extends Struct.ComponentSchema {
     displayName: 'Testimonials Section';
   };
   attributes: {
+    eyebrow: Schema.Attribute.String;
     items: Schema.Attribute.Component<'home.testimonial-item', true>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface SharedCtaBanner extends Struct.ComponentSchema {
+  collectionName: 'components_shared_cta_banners';
+  info: {
+    displayName: 'CtaBanner';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'blocks.cta', false>;
+    text: Schema.Attribute.String;
   };
 }
 
@@ -348,6 +374,7 @@ export interface SharedFooter extends Struct.ComponentSchema {
     address: Schema.Attribute.Text;
     legalLinks: Schema.Attribute.Component<'elements.nav-item', true>;
     logo: Schema.Attribute.Media<'images'>;
+    logo_esf: Schema.Attribute.Media<'images' | 'files'>;
     socialLinks: Schema.Attribute.Component<'elements.social-link', true>;
     tagline: Schema.Attribute.String;
   };
@@ -380,6 +407,7 @@ declare module '@strapi/strapi' {
       'elements.accordion-item': ElementsAccordionItem;
       'elements.card-item': ElementsCardItem;
       'elements.cta-link': ElementsCtaLink;
+      'elements.list-item': ElementsListItem;
       'elements.nav-item': ElementsNavItem;
       'elements.social-link': ElementsSocialLink;
       'home.conviction-item': HomeConvictionItem;
@@ -396,6 +424,7 @@ declare module '@strapi/strapi' {
       'home.split-section': HomeSplitSection;
       'home.testimonial-item': HomeTestimonialItem;
       'home.testimonials-section': HomeTestimonialsSection;
+      'shared.cta-banner': SharedCtaBanner;
       'shared.footer': SharedFooter;
       'shared.seo': SharedSeo;
     }

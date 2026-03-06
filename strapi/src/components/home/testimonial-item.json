@@ -15,14 +15,6 @@
     },
     "role": {
       "type": "string"
-    },
-    "company": {
-      "type": "string"
-    },
-    "avatar": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
     }
   },
   "config": {}
