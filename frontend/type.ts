@@ -218,7 +218,7 @@ export type ListItem = {
 
 export type SolutionCard = {
   id: number;
-  name: string;
+  name: string | null;
   logo: StrapiImage | null;
   background: "primary" | "secondary" | null;
   title: string | null;
@@ -292,6 +292,8 @@ export type ExpertisePage = {
   documentId: string;
   seo: Seo | null;
   hero: PageHeroData | null;
+  three_col_cards: ExpertisesSection | null;
+  fullWidthImage: StrapiImage | null;
   cards_group: SplitSection[];
 };
 

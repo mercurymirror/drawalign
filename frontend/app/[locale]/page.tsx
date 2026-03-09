@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { HomeHero } from "@/components/home/HomeHero";
-import { HomeExpertises } from "@/components/home/HomeExpertises";
-import { HomeFullWidthImage } from "@/components/home/HomeFullWidthImage";
+import { ThreeColCards } from "@/components/ui/ThreeColCards";
+import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { HomeQuote } from "@/components/home/HomeQuote";
 import { HomeConvictions } from "@/components/home/HomeConvictions";
 import { HomeSolutions } from "@/components/home/HomeSolutions";
@@ -67,10 +67,8 @@ export default async function HomePage({ params }: Props) {
     <main>
       {isDraft && <PreviewBanner />}
       {home.hero && <HomeHero {...home.hero} />}
-      {home.expertises && <HomeExpertises {...home.expertises} />}
-      {home.fullWidthImage && (
-        <HomeFullWidthImage image={home.fullWidthImage} />
-      )}
+      {home.expertises && <ThreeColCards {...home.expertises} />}
+      {home.fullWidthImage && <FullWidthImage image={home.fullWidthImage} />}
       {home.quoteSection && <HomeQuote {...home.quoteSection} />}
       {home.convictions && <HomeConvictions {...home.convictions} />}
       {home.solutions && <HomeSolutions {...home.solutions} />}

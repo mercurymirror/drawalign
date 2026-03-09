@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { ExpertisesSection } from "@/type";
 
-export function HomeExpertises({ items, cta }: ExpertisesSection) {
+export function ThreeColCards({ items, cta }: ExpertisesSection) {
   return (
     <Section className="bg-white">
       <div className="grid gap-10 md:grid-cols-3">

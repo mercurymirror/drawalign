@@ -160,6 +160,10 @@ export async function getExpertisePage(
         populate: {
           seo: { populate: { ogImage: true } },
           hero: true,
+          three_col_cards: {
+            populate: { items: { populate: { icon: true } }, cta: true },
+          },
+          fullWidthImage: true,
           cards_group: { populate: { image: true, features: true } },
         },
       },

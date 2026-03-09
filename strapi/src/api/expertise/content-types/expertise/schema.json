@@ -35,6 +35,28 @@
       "component": "shared.page-hero",
       "repeatable": false
     },
+    "three_col_cards": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.expertises-section",
+      "repeatable": false
+    },
+    "fullWidthImage": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "cards_group": {
       "type": "component",
       "pluginOptions": {

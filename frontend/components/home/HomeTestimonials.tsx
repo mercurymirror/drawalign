@@ -62,7 +62,10 @@ export function HomeTestimonials({
         <div className="md:hidden absolute right-0 top-0 bottom-0 w-24 pointer-events-none z-10" />
         <div
           ref={trackRef}
-          className={cn("flex gap-8 px-5 md:px-16 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory md:snap-none", centered && "md:justify-center")}
+          className={cn(
+            "flex gap-8 px-5 md:px-16 overflow-x-auto md:overflow-visible scrollbar-hide snap-x snap-mandatory md:snap-none",
+            centered && "md:justify-center",
+          )}
         >
           {items.map((item) => (
             <Card
@@ -70,7 +73,7 @@ export function HomeTestimonials({
               className="flex flex-col gap-6 flex-none w-[calc((100vw-52px)/1.15)] sm:w-[55vw] md:w-80"
             >
               <p className="text-base leading-5 text-foreground">
-                &ldquo;{item.quote}&rdquo;
+                {item.quote}
               </p>
               <div className="mt-auto">
                 <p className="text-base leading-5 font-medium text-foreground">

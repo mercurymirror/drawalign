@@ -3,19 +3,32 @@ import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cn } from "@/lib/utils";
-import type { SolutionsSection } from "@/type";
+import type { CtaLink, ListItem, StrapiImage as StrapiImageType } from "@/type";
+
+type SplitItem = {
+  id: number;
+  name?: string | null;
+  logo?: StrapiImageType | null;
+  background?: "primary" | "secondary" | null;
+  title?: string | null;
+  description?: string | null;
+  features?: ListItem[] | null;
+  image?: StrapiImageType | null;
+};
+
+type Props = {
+  eyebrow?: string | null;
+  title?: string | null;
+  button?: CtaLink | null;
+  items: SplitItem[];
+};
 
 const bgMap = {
   primary: { bg: "bg-primary", text: "text-white" },
   secondary: { bg: "bg-secondary", text: "text-white" },
 };
 
-export function HomeSolutions({
-  eyebrow,
-  title,
-  button,
-  items,
-}: SolutionsSection) {
+export function HomeSolutions({ eyebrow, title, button, items }: Props) {
   return (
     <Section>
       {title && (
@@ -66,8 +79,8 @@ export function HomeSolutions({
                     <div className="flex gap-2">
                       <StrapiImage
                         image={item.logo}
-                        alt={item.logo.alternativeText ?? item.name}
-                        className="h-8 w-auto object-contain self-start"
+                        alt={item.logo.alternativeText ?? item.name ?? ""}
+                        className={cn("h-8 w-auto object-contain self-start", !isEven && "order-last")}
                       />
                       <p className="text-[40px] self-start leading-[0.9] font-medium text-foreground">
                         {item.name}

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { getGlobal, getExpertisePage, getStrapiImageUrl } from "@/lib/strapi";
 import { PageHero } from "@/components/layout/PageHero";
-import { ExpertisesItems } from "@/components/expertises/ExpertisesItems";
+import { ThreeColCards } from "@/components/ui/ThreeColCards";
+import { FullWidthImage } from "@/components/ui/FullWidthImage";
+import { HomeSolutions } from "@/components/home/HomeSolutions";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -61,8 +63,14 @@ export default async function ExpertisesPage({ params }: Props) {
           subtitle={page.hero.text}
         />
       )}
+      {page.three_col_cards && (
+        <ThreeColCards {...page.three_col_cards} />
+      )}
+      {page.fullWidthImage && (
+        <FullWidthImage image={page.fullWidthImage} />
+      )}
       {page.cards_group && page.cards_group.length > 0 && (
-        <ExpertisesItems items={page.cards_group} />
+        <HomeSolutions items={page.cards_group} />
       )}
     </main>
   );

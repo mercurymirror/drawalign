@@ -13,7 +13,7 @@ export function ImageBlock({ image, caption }: ImageBlockType) {
           alt={image.alternativeText ?? caption ?? ""}
           width={image.width}
           height={image.height}
-          className="h-auto w-full max-h-[580px] object-cover"
+          className="h-auto w-full object-cover"
         />
       </div>
       {caption && (

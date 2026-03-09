@@ -313,22 +313,6 @@ export interface HomeSolutionsSection extends Struct.ComponentSchema {
   };
 }
 
-export interface HomeSplitSection extends Struct.ComponentSchema {
-  collectionName: 'components_home_split_sections';
-  info: {
-    displayName: 'Split Section';
-  };
-  attributes: {
-    backgroundColor: Schema.Attribute.String;
-    ctaHref: Schema.Attribute.String;
-    ctaLabel: Schema.Attribute.String;
-    image: Schema.Attribute.Media<'images'>;
-    reversed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    text: Schema.Attribute.Blocks;
-    title: Schema.Attribute.String;
-  };
-}
-
 export interface HomeTestimonialItem extends Struct.ComponentSchema {
   collectionName: 'components_home_testimonial_items';
   info: {
@@ -448,7 +432,6 @@ declare module '@strapi/strapi' {
       'home.quote-section': HomeQuoteSection;
       'home.solution-card': HomeSolutionCard;
       'home.solutions-section': HomeSolutionsSection;
-      'home.split-section': HomeSplitSection;
       'home.testimonial-item': HomeTestimonialItem;
       'home.testimonials-section': HomeTestimonialsSection;
       'shared.cta-banner': SharedCtaBanner;
