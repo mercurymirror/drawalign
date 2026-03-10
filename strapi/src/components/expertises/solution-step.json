@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_expertises_solution_steps",
+  "info": {
+    "displayName": "Solution Step",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "badge_label": {
+      "type": "string",
+      "required": true
+    },
+    "badge_variant": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary", "accent"],
+      "default": "primary"
+    },
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "revelation": {
+      "type": "text"
+    }
+  }
+}

@@ -216,6 +216,13 @@ export type ListItem = {
   text: string;
 };
 
+export type MetricItem = {
+  id: number;
+  label: string;
+  before: string | null;
+  after: string;
+};
+
 export type SolutionCard = {
   id: number;
   name: string | null;
@@ -271,6 +278,12 @@ export type Home = {
 };
 
 // Expertises Page
+export type SectionHeader = {
+  id: number;
+  eyebrow: string | null;
+  title: string;
+};
+
 export type PageHeroData = {
   id: number;
   eyebrow: string | null;
@@ -287,6 +300,48 @@ export type SplitSection = {
   background: "primary" | "secondary" | null;
 };
 
+export type CaseCategory = {
+  id: number;
+  label: string;
+};
+
+export type CaseTag = {
+  id: number;
+  label: string;
+};
+
+export type SolutionStep = {
+  id: number;
+  badge_label: string;
+  badge_variant: "primary" | "secondary" | "accent" | null;
+  title: string | null;
+  items: ListItem[] | null;
+  revelation: string | null;
+};
+
+export type ClientCase = {
+  id: number;
+  documentId: string;
+  title: string;
+  card_title: string | null;
+  thumbnail_title: string | null;
+  thumbnail_text: string | null;
+  background: "primary" | "secondary";
+  category: CaseCategory | null;
+  features: ListItem[] | null;
+  objectives: ListItem[] | null;
+  tags: CaseTag[] | null;
+  context_text: string | null;
+  context_items: ListItem[] | null;
+  problem_text: string | null;
+  problem_consequence: string | null;
+  solution_cycle_name: string | null;
+  solution_steps: SolutionStep[] | null;
+  results_metrics: MetricItem[] | null;
+  results_benefit: string | null;
+  results_feedback: string | null;
+};
+
 export type ExpertisePage = {
   id: number;
   documentId: string;
@@ -294,7 +349,10 @@ export type ExpertisePage = {
   hero: PageHeroData | null;
   three_col_cards: ExpertisesSection | null;
   fullWidthImage: StrapiImage | null;
+  fullWidthImage2: StrapiImage | null;
   cards_group: SplitSection[];
+  client_cases: ClientCase[] | null;
+  client_case_header: SectionHeader | null;
 };
 
 // Réponse API Strapi

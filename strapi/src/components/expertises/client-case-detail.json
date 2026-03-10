@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_expertises_client_case_details",
+  "info": {
+    "displayName": "Client Case Detail",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "context_text": {
+      "type": "text"
+    },
+    "context_items": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "problem_text": {
+      "type": "text"
+    },
+    "problem_consequence": {
+      "type": "text"
+    },
+    "solution_cycle_name": {
+      "type": "string"
+    },
+    "solution_steps": {
+      "type": "component",
+      "component": "expertises.solution-step",
+      "repeatable": true
+    },
+    "results_metrics": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "results_benefit": {
+      "type": "text"
+    },
+    "results_feedback": {
+      "type": "text"
+    }
+  }
+}

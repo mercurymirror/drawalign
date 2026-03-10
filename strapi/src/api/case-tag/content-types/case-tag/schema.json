@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_tags",
+  "info": {
+    "singularName": "case-tag",
+    "pluralName": "case-tags",
+    "displayName": "Tags Cas clients"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "client_cases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::client-case.client-case",
+      "mappedBy": "tags"
+    }
+  }
+}

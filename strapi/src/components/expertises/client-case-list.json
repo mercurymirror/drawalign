@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_expertises_client_case_lists",
+  "info": {
+    "displayName": "Client Case List",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary"],
+      "default": "primary"
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "objectives": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    },
+    "tags": {
+      "type": "component",
+      "component": "elements.list-item",
+      "repeatable": true
+    }
+  }
+}

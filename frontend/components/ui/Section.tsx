@@ -2,17 +2,32 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   variant?: "default" | "narrow";
+  noPadding?: boolean;
+  id?: string;
   className?: string;
   children: React.ReactNode;
 };
 
-const variants = {
-  default: "px-5 py-8 md:py-12 max-w-9xl mx-auto",
-  narrow: "px-5 md:px-18 lg:px-38 py-8 md:py-12 max-w-9xl mx-auto",
+const layout = {
+  default: "px-5 max-w-9xl mx-auto",
+  narrow: "px-5 md:px-18 lg:px-38 max-w-9xl mx-auto",
 };
 
-export function Section({ variant = "default", className, children }: Props) {
+const defaultPadding = "py-8 md:py-12";
+
+export function Section({
+  variant = "default",
+  noPadding = false,
+  id,
+  className,
+  children,
+}: Props) {
   return (
-    <section className={cn(variants[variant], className)}>{children}</section>
+    <section
+      id={id}
+      className={cn(layout[variant], !noPadding && defaultPadding, className)}
+    >
+      {children}
+    </section>
   );
 }

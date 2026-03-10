@@ -66,6 +66,35 @@
       },
       "component": "shared.split-section",
       "repeatable": true
+    },
+    "client_cases": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::client-case.client-case",
+      "inversedBy": "expertises"
+    },
+    "fullWidthImage2": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "client_case_header": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.section-header",
+      "repeatable": false
     }
   }
 }

@@ -4,6 +4,9 @@ import { PageHero } from "@/components/layout/PageHero";
 import { ThreeColCards } from "@/components/ui/ThreeColCards";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { HomeSolutions } from "@/components/home/HomeSolutions";
+import { ExpertiseCasesSection } from "@/components/expertises/ExpertiseCasesSection";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Section } from "@/components/ui/Section";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -17,7 +20,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ]);
 
   const title = page?.seo?.metaTitle || undefined;
-  const description = page?.seo?.metaDescription || global?.seo?.metaDescription;
+  const description =
+    page?.seo?.metaDescription || global?.seo?.metaDescription;
   const ogImage = page?.seo?.ogImage || global?.seo?.ogImage;
 
   return {
@@ -63,14 +67,37 @@ export default async function ExpertisesPage({ params }: Props) {
           subtitle={page.hero.text}
         />
       )}
-      {page.three_col_cards && (
-        <ThreeColCards {...page.three_col_cards} />
-      )}
+      {page.three_col_cards && <ThreeColCards {...page.three_col_cards} />}
       {page.fullWidthImage && (
-        <FullWidthImage image={page.fullWidthImage} />
+        <FullWidthImage image={page.fullWidthImage} className="mt-8" />
       )}
       {page.cards_group && page.cards_group.length > 0 && (
         <HomeSolutions items={page.cards_group} />
+      )}
+      {page.client_cases && page.client_cases.length > 0 ? (
+        <ExpertiseCasesSection cases={page.client_cases}>
+          {page.fullWidthImage2 && <FullWidthImage image={page.fullWidthImage2} />}
+          {page.client_case_header && (
+            <Section>
+              <SectionHeader
+                eyebrow={page.client_case_header.eyebrow}
+                title={page.client_case_header.title}
+              />
+            </Section>
+          )}
+        </ExpertiseCasesSection>
+      ) : (
+        <>
+          {page.fullWidthImage2 && <FullWidthImage image={page.fullWidthImage2} />}
+          {page.client_case_header && (
+            <Section>
+              <SectionHeader
+                eyebrow={page.client_case_header.eyebrow}
+                title={page.client_case_header.title}
+              />
+            </Section>
+          )}
+        </>
       )}
     </main>
   );

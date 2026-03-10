@@ -145,6 +145,19 @@ export interface ElementsListItem extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsMetricItem extends Struct.ComponentSchema {
+  collectionName: 'components_elements_metric_items';
+  info: {
+    displayName: 'Metric Item';
+    icon: 'chartLine';
+  };
+  attributes: {
+    after: Schema.Attribute.String & Schema.Attribute.Required;
+    before: Schema.Attribute.String;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ElementsNavItem extends Struct.ComponentSchema {
   collectionName: 'components_elements_nav_items';
   info: {
@@ -169,6 +182,66 @@ export interface ElementsSocialLink extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required;
     url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ExpertisesClientCaseDetail extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_client_case_details';
+  info: {
+    displayName: 'Client Case Detail';
+    icon: 'file';
+  };
+  attributes: {
+    category: Schema.Attribute.String;
+    context_items: Schema.Attribute.Component<'elements.list-item', true>;
+    context_text: Schema.Attribute.Text;
+    problem_consequence: Schema.Attribute.Text;
+    problem_text: Schema.Attribute.Text;
+    results_benefit: Schema.Attribute.Text;
+    results_feedback: Schema.Attribute.Text;
+    results_metrics: Schema.Attribute.Component<'elements.list-item', true>;
+    solution_cycle_name: Schema.Attribute.String;
+    solution_steps: Schema.Attribute.Component<
+      'expertises.solution-step',
+      true
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ExpertisesClientCaseList extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_client_case_lists';
+  info: {
+    description: '';
+    displayName: 'Client Case List';
+    icon: 'grid';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<['primary', 'secondary']> &
+      Schema.Attribute.DefaultTo<'primary'>;
+    cta: Schema.Attribute.Component<'elements.cta-link', false>;
+    features: Schema.Attribute.Component<'elements.list-item', true>;
+    objectives: Schema.Attribute.Component<'elements.list-item', true>;
+    tags: Schema.Attribute.Component<'elements.list-item', true>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ExpertisesSolutionStep extends Struct.ComponentSchema {
+  collectionName: 'components_expertises_solution_steps';
+  info: {
+    displayName: 'Solution Step';
+    icon: 'bulletList';
+  };
+  attributes: {
+    badge_label: Schema.Attribute.String & Schema.Attribute.Required;
+    badge_variant: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'accent']
+    > &
+      Schema.Attribute.DefaultTo<'primary'>;
+    items: Schema.Attribute.Component<'elements.list-item', true>;
+    revelation: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -376,6 +449,19 @@ export interface SharedPageHero extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSectionHeader extends Struct.ComponentSchema {
+  collectionName: 'components_shared_section_headers';
+  info: {
+    description: '';
+    displayName: 'Section Header';
+    icon: 'heading';
+  };
+  attributes: {
+    eyebrow: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedSeo extends Struct.ComponentSchema {
   collectionName: 'components_shared_seos';
   info: {
@@ -419,8 +505,12 @@ declare module '@strapi/strapi' {
       'elements.card-item': ElementsCardItem;
       'elements.cta-link': ElementsCtaLink;
       'elements.list-item': ElementsListItem;
+      'elements.metric-item': ElementsMetricItem;
       'elements.nav-item': ElementsNavItem;
       'elements.social-link': ElementsSocialLink;
+      'expertises.client-case-detail': ExpertisesClientCaseDetail;
+      'expertises.client-case-list': ExpertisesClientCaseList;
+      'expertises.solution-step': ExpertisesSolutionStep;
       'home.conviction-item': HomeConvictionItem;
       'home.convictions-section': HomeConvictionsSection;
       'home.cta-final': HomeCtaFinal;
@@ -437,6 +527,7 @@ declare module '@strapi/strapi' {
       'shared.cta-banner': SharedCtaBanner;
       'shared.footer': SharedFooter;
       'shared.page-hero': SharedPageHero;
+      'shared.section-header': SharedSectionHeader;
       'shared.seo': SharedSeo;
       'shared.split-section': SharedSplitSection;
     }

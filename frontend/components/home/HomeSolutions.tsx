@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { BoldPrefixText } from "@/components/ui/BoldPrefixText";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -104,14 +105,7 @@ export function HomeSolutions({ eyebrow, title, button, items }: Props) {
                           key={f.id}
                           className="flex border-l border-white px-5 font-medium text-white items-start gap-2 text-sm"
                         >
-                          {f.text.includes(":") ? (
-                            <span>
-                              <strong>{f.text.split(":")[0]}</strong>:
-                              {f.text.split(":").slice(1).join(":")}
-                            </span>
-                          ) : (
-                            <span>{f.text}</span>
-                          )}
+                          <BoldPrefixText text={f.text} />
                         </li>
                       ))}
                     </ul>
