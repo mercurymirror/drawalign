@@ -1,0 +1,8 @@
+{
+  "eslint.workingDirectories": ["frontend"],
+  "eslint.useFlatConfig": true,
+  "biome.lspBin": "frontend/node_modules/.bin/biome",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "kind": "singleType",
+  "collectionName": "methode_hldbs",
+  "info": {
+    "singularName": "methode-hldb",
+    "pluralName": "methode-hldbs",
+    "displayName": "Méthode HLDB"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "hero": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "hero_diagram": {
+      "type": "media",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "diagram_center_title": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "diagram_center_text": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "diagram_left": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "methode.diagram-card",
+      "repeatable": false
+    },
+    "diagram_right": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "methode.diagram-card",
+      "repeatable": false
+    },
+    "principles_title": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "principles_items": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "home.conviction-item",
+      "repeatable": true
+    },
+    "theoretical_title": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "theoretical_items": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "home.conviction-item",
+      "repeatable": true
+    },
+    "section3_cta": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "fullWidthImage": {
+      "type": "media",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "maturity_title": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "maturity_text": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "highlight_title": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "highlight_text": {
+      "type": "text",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "maturity_cta": {
+      "type": "component",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "component": "elements.cta-link",
+      "repeatable": false
+    },
+    "maturity_image": {
+      "type": "media",
+      "pluginOptions": { "i18n": { "localized": true } },
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}

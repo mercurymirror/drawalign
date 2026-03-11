@@ -3,34 +3,30 @@ import { StrapiImage } from "@/components/ui/StrapiImage";
 import type { QuoteSection } from "@/type";
 
 export function HomeQuote({ image, title, text, cta }: QuoteSection) {
-  return (
-    <section className="bg-accent-peach px-5 pb-5">
-      <div className="grid rounded-2xl bg-accent-peach md:grid-cols-2 overflow-hidden">
-        {/* Gauche : titre + texte + CTA */}
-        <div className="flex flex-col bg-primary justify-between gap-8 px-10 3xl:px-18 py-16 md:py-24">
-          <div className="flex flex-col gap-6">
-            <h2 className="text-3xl md:text-4xl 3xl:text-6xl text-white">
-              {title}
-            </h2>
-            {text && (
-              <p className="text-base 3xl:text-2xl text-white">{text}</p>
-            )}
-          </div>
-          {cta && (
-            <div>
-              <Button href={cta.href} variant="foreground" size="sm">
-                {cta.label}
-              </Button>
-            </div>
-          )}
-        </div>
-        {/* Droite : image */}
-        {image && (
-          <div className="relative bg-secondary min-h-72 md:min-h-0">
-            <StrapiImage image={image} fill className="" />
-          </div>
-        )}
-      </div>
-    </section>
-  );
+	return (
+		<section className="bg-accent-peach px-5 pb-5">
+			<div className="grid overflow-hidden rounded-2xl bg-accent-peach md:grid-cols-2">
+				{/* Gauche : titre + texte + CTA */}
+				<div className="flex flex-col justify-between gap-8 bg-primary 3xl:px-18 px-10 py-16 md:py-24">
+					<div className="flex flex-col gap-6">
+						<h2 className="3xl:text-6xl text-3xl text-white md:text-4xl">{title}</h2>
+						{text && <p className="3xl:text-2xl text-base text-white">{text}</p>}
+					</div>
+					{cta && (
+						<div>
+							<Button href={cta.href} variant="foreground" size="sm">
+								{cta.label}
+							</Button>
+						</div>
+					)}
+				</div>
+				{/* Droite : image */}
+				{image && (
+					<div className="relative min-h-72 bg-secondary md:min-h-0">
+						<StrapiImage image={image} fill className="" />
+					</div>
+				)}
+			</div>
+		</section>
+	);
 }

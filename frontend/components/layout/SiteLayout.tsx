@@ -6,58 +6,47 @@ import { NavHeader } from "./NavHeader";
 import { NavSidebar } from "./NavSidebar";
 
 export async function SiteLayout({
-  children,
-  locale,
+	children,
+	locale,
 }: {
-  children: React.ReactNode;
-  locale: string;
+	children: React.ReactNode;
+	locale: string;
 }) {
-  const [global, pages] = await Promise.all([
-    getGlobal(locale),
-    getAllPages(locale),
-  ]);
+	const [global, pages] = await Promise.all([getGlobal(locale), getAllPages(locale)]);
 
-  if (!global) {
-    return <>{children}</>;
-  }
+	if (!global) {
+		return <>{children}</>;
+	}
 
-  const { siteName, navVariant, logo, ctaBanner } = global;
+	const { siteName, navVariant, logo, ctaBanner } = global;
 
-  const navItems: NavItem[] = global.navItems?.length
-    ? global.navItems
-    : pages.map((page) => ({
-        id: page.id,
-        label: page.title,
-        href: `/${page.slug}`,
-      }));
+	const navItems: NavItem[] = global.navItems?.length
+		? global.navItems
+		: pages.map((page) => ({
+				id: page.id,
+				label: page.title,
+				href: `/${page.slug}`,
+			}));
 
-  if (navVariant === "sidebar") {
-    return (
-      <div className="flex min-h-screen">
-        <NavSidebar siteName={siteName} items={navItems} />
-        <div className="flex flex-1 flex-col md:ml-64">
-          <main className="flex-1 lg:max-w-9xl lg:mx-auto">{children}</main>
-          {ctaBanner && <CtaBanner text={ctaBanner.text} cta={ctaBanner.cta} />}
-          <Footer
-            footer={global.footer}
-            siteName={siteName}
-            sitemapItems={navItems}
-          />
-        </div>
-      </div>
-    );
-  }
+	if (navVariant === "sidebar") {
+		return (
+			<div className="flex min-h-screen">
+				<NavSidebar siteName={siteName} items={navItems} />
+				<div className="flex flex-1 flex-col md:ml-64">
+					<main className="flex-1 lg:mx-auto lg:max-w-9xl">{children}</main>
+					{ctaBanner && <CtaBanner text={ctaBanner.text} cta={ctaBanner.cta} />}
+					<Footer footer={global.footer} siteName={siteName} sitemapItems={navItems} />
+				</div>
+			</div>
+		);
+	}
 
-  return (
-    <div className="flex min-h-screen flex-col">
-      <NavHeader siteName={siteName} logo={logo} items={navItems} />
-      <main className="flex-1">{children}</main>
-      {ctaBanner && <CtaBanner text={ctaBanner.text} cta={ctaBanner.cta} />}
-      <Footer
-        footer={global.footer}
-        siteName={siteName}
-        sitemapItems={navItems}
-      />
-    </div>
-  );
+	return (
+		<div className="flex min-h-screen flex-col">
+			<NavHeader siteName={siteName} logo={logo} items={navItems} />
+			<main className="flex-1">{children}</main>
+			{ctaBanner && <CtaBanner text={ctaBanner.text} cta={ctaBanner.cta} />}
+			<Footer footer={global.footer} siteName={siteName} sitemapItems={navItems} />
+		</div>
+	);
 }

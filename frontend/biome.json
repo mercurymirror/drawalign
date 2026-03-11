@@ -20,7 +20,10 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noConsole": "warn",
+				"noConsole": {
+					"level": "warn",
+					"options": { "allow": ["error", "warn"] }
+				},
 				"noArrayIndexKey": "off"
 			},
 			"style": {

@@ -410,6 +410,21 @@ export interface HomeTestimonialsSection extends Struct.ComponentSchema {
   };
 }
 
+export interface MethodeDiagramCard extends Struct.ComponentSchema {
+  collectionName: 'components_methode_diagram_cards';
+  info: {
+    displayName: 'Diagram Card';
+    icon: 'layout';
+  };
+  attributes: {
+    background: Schema.Attribute.Enumeration<['primary', 'secondary']> &
+      Schema.Attribute.DefaultTo<'primary'>;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedCtaBanner extends Struct.ComponentSchema {
   collectionName: 'components_shared_cta_banners';
   info: {
@@ -524,6 +539,7 @@ declare module '@strapi/strapi' {
       'home.solutions-section': HomeSolutionsSection;
       'home.testimonial-item': HomeTestimonialItem;
       'home.testimonials-section': HomeTestimonialsSection;
+      'methode.diagram-card': MethodeDiagramCard;
       'shared.cta-banner': SharedCtaBanner;
       'shared.footer': SharedFooter;
       'shared.page-hero': SharedPageHero;

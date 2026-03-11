@@ -1,30 +1,30 @@
-import type { ConvictionsSection } from "@/type";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import type { ConvictionsSection } from "@/type";
 
 export function HomeConvictions({ eyebrow, title, items }: ConvictionsSection) {
-  return (
-    <Section variant="narrow">
-        <SectionHeader eyebrow={eyebrow} title={title} className="mb-12" />
+	return (
+		<Section variant="narrow">
+			<SectionHeader eyebrow={eyebrow} title={title} className="mb-12" />
 
-        <div className="flex flex-col gap-5">
-          {items.map((item) => (
-            <Card
-              key={item.id}
-              className="flex items-center flex-col gap-4 md:gap-6 lg:gap-10 p-8 lg:p-15"
-            >
-              <h3 className="text-base md:text-2xl lg:text-3xl 2xl:text-4xl text-center tracking-[-5%] uppercase">
-                {item.title}
-              </h3>
-              {item.text && (
-                <p className="text-sm lg:text-base 2xl:text-xl text-foreground text-center">
-                  {item.text}
-                </p>
-              )}
-            </Card>
-          ))}
-        </div>
-    </Section>
-  );
+			<div className="flex flex-col gap-5">
+				{items.map((item) => (
+					<Card
+						key={item.id}
+						className="flex flex-col items-center gap-4 p-8 md:gap-6 lg:gap-10 lg:p-15"
+					>
+						<h3 className="text-center text-base uppercase tracking-[-5%] md:text-2xl lg:text-3xl 2xl:text-4xl">
+							{item.title}
+						</h3>
+						{item.text && (
+							<p className="text-center text-foreground text-sm lg:text-base 2xl:text-xl">
+								{item.text}
+							</p>
+						)}
+					</Card>
+				))}
+			</div>
+		</Section>
+	);
 }

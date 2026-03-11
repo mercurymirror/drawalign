@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { SiteLayout } from "@/components/layout/SiteLayout";
+import { routing } from "@/i18n/routing";
 import { getGlobal, getStrapiImageUrl } from "@/lib/strapi";
 
 type Props = {
@@ -15,7 +15,11 @@ export async function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
 	const { locale } = await params;
 	const global = await getGlobal(locale);
 	const siteName = global?.siteName || "My Site";

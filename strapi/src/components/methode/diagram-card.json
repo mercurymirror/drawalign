@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_methode_diagram_cards",
+  "info": {
+    "displayName": "Diagram Card",
+    "icon": "layout"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary"],
+      "default": "primary"
+    }
+  }
+}
