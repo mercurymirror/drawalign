@@ -644,6 +644,42 @@ export interface ApiClientCaseClientCase extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactContact extends Struct.SingleTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    displayName: 'Contact';
+    pluralName: 'contacts';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    adress: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'shared.page-hero', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    > &
+      Schema.Attribute.Private;
+    mail: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiExpertiseExpertise extends Struct.SingleTypeSchema {
   collectionName: 'expertises';
   info: {
@@ -767,6 +803,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     siteName: Schema.Attribute.String;
+    teamPhoto: Schema.Attribute.Media<'images'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -839,12 +876,6 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
       }>;
     siteName: Schema.Attribute.String;
     solutions: Schema.Attribute.Component<'home.solutions-section', false> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    teamPhoto: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1076,6 +1107,46 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPartenairePartenaire extends Struct.SingleTypeSchema {
+  collectionName: 'partenaires';
+  info: {
+    displayName: 'Partenaires';
+    pluralName: 'partenaires';
+    singularName: 'partenaire';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    features: Schema.Attribute.Component<'shared.split-section', false>;
+    fullWidthImage: Schema.Attribute.Media<'images'>;
+    fullWidthImage2: Schema.Attribute.Media<'images'>;
+    hero: Schema.Attribute.Component<'shared.page-hero', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::partenaire.partenaire'
+    > &
+      Schema.Attribute.Private;
+    partenaireTitle: Schema.Attribute.Component<'shared.section-header', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    quote_author: Schema.Attribute.String;
+    quote_function: Schema.Attribute.String;
+    quote_text: Schema.Attribute.Text;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    three_col_cards: Schema.Attribute.Component<
+      'home.expertises-section',
+      false
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSolutionSolution extends Struct.SingleTypeSchema {
   collectionName: 'solutions';
   info: {
@@ -1124,6 +1195,38 @@ export interface ApiSolutionSolution extends Struct.SingleTypeSchema {
     pricing_offers: Schema.Attribute.Component<'solutions.pricing-card', true>;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
+  collectionName: 'team_members';
+  info: {
+    displayName: 'Team members';
+    pluralName: 'team-members';
+    singularName: 'team-member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'elements.cta-link', false>;
+    function: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1644,12 +1747,15 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::case-tag.case-tag': ApiCaseTagCaseTag;
       'api::client-case.client-case': ApiClientCaseClientCase;
+      'api::contact.contact': ApiContactContact;
       'api::expertise.expertise': ApiExpertiseExpertise;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
       'api::methode-hldb.methode-hldb': ApiMethodeHldbMethodeHldb;
       'api::page.page': ApiPagePage;
+      'api::partenaire.partenaire': ApiPartenairePartenaire;
       'api::solution.solution': ApiSolutionSolution;
+      'api::team-member.team-member': ApiTeamMemberTeamMember;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

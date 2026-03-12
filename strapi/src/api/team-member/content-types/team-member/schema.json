@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "team_members",
+  "info": {
+    "singularName": "team-member",
+    "pluralName": "team-members",
+    "displayName": "Team members"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "function": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "component",
+      "component": "elements.cta-link",
+      "repeatable": false
+    }
+  }
+}

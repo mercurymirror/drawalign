@@ -13,7 +13,7 @@ export function HowItWorksStepsBlock({ title, steps }: HowItWorksSteps) {
         {steps.map((step, index) => (
           <div
             key={step.id}
-            className="flex flex-col gap-5 rounded-2xl border-light-gray border-l p-8"
+            className="flex flex-col gap-5 border-light-gray border-l p-8"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary font-medium text-sm text-white">
               {index + 1}

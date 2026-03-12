@@ -26,8 +26,23 @@
       "type": "enumeration",
       "enum": [
         "primary",
-        "secondary"
+        "secondary",
+        "accent-peach"
       ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "logo_right": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -1,0 +1,63 @@
+{
+  "kind": "singleType",
+  "collectionName": "partenaires",
+  "info": {
+    "singularName": "partenaire",
+    "pluralName": "partenaires",
+    "displayName": "Partenaires"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "hero": {
+      "type": "component",
+      "component": "shared.page-hero",
+      "repeatable": false
+    },
+    "fullWidthImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "three_col_cards": {
+      "type": "component",
+      "component": "home.expertises-section",
+      "repeatable": false
+    },
+    "partenaireTitle": {
+      "type": "component",
+      "component": "shared.section-header",
+      "repeatable": false
+    },
+    "features": {
+      "type": "component",
+      "component": "shared.split-section",
+      "repeatable": false
+    },
+    "fullWidthImage2": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "quote_text": {
+      "type": "text"
+    },
+    "quote_author": {
+      "type": "string"
+    },
+    "quote_function": {
+      "type": "string"
+    }
+  }
+}

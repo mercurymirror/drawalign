@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
 	const { locale } = await params;
 	const { isEnabled: isDraft } = await draftMode();
-	const home = await getHome(locale);
+	const [home, global] = await Promise.all([getHome(locale), getGlobal(locale)]);
 
 	if (!home) {
 		return (
@@ -48,9 +48,9 @@ export default async function HomePage({ params }: Props) {
 			{home.solutions && <HomeSolutions {...home.solutions} />}
 			{home.testimonials && <HomeTestimonials {...home.testimonials} />}
 			{home.logos && <HomeLogos {...home.logos} />}
-			{home.teamPhoto && (
+			{global?.teamPhoto && (
 				<section className="overflow-hidden bg-primary lg:px-28">
-					<StrapiImage image={home.teamPhoto} className="w-full" />
+					<StrapiImage image={global.teamPhoto} className="w-full" />
 				</section>
 			)}
 		</main>

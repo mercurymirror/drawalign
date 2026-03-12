@@ -559,11 +559,16 @@ export interface SolutionsPricingCard extends Struct.ComponentSchema {
     displayName: 'Pricing Card';
   };
   attributes: {
-    background: Schema.Attribute.Enumeration<['primary', 'secondary']>;
+    background: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'accent-peach']
+    >;
     cta: Schema.Attribute.Component<'elements.cta-link', false>;
     description: Schema.Attribute.Text;
     features: Schema.Attribute.Component<'elements.list-item', true>;
+    logo: Schema.Attribute.Media<'images'>;
+    logo_right: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    price: Schema.Attribute.String;
   };
 }
 

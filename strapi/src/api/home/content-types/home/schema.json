@@ -109,18 +109,6 @@
       },
       "component": "home.logos-section",
       "repeatable": false
-    },
-    "teamPhoto": {
-      "type": "media",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
     }
   }
 }

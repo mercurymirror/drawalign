@@ -6,7 +6,7 @@ export function BoldPrefixText({ text, prefixClassName, bodyClassName }: Props) 
 	return (
 		<span>
 			<strong className={prefixClassName}>{prefix}</strong>
-			<span className={bodyClassName}>{`:${rest.join(":")}`}</span>
+			<span className={`whitespace-pre-line${bodyClassName ? ` ${bodyClassName}` : ""}`}>{`:${rest.join(":")}`}</span>
 		</span>
 	);
 }
