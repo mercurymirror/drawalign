@@ -44,42 +44,52 @@ export async function getPageBySlug(
 	slug: string,
 	{ draft = false, locale = "fr" }: { draft?: boolean; locale?: string } = {},
 ): Promise<Page | null> {
-	const query = qs.stringify(
-		{
-			filters: { slug: { $eq: slug } },
-			populate: {
-				seo: { populate: { ogImage: true } },
-				blocks: {
-					on: {
-						"blocks.hero": { populate: { backgroundImage: true } },
-						"blocks.gallery": { populate: { images: true } },
-						"blocks.image-block": { populate: { image: true } },
-						"blocks.cards": {
-							populate: { items: { populate: { image: true } } },
+	try {
+		const query = qs.stringify(
+			{
+				filters: { slug: { $eq: slug } },
+				populate: {
+					seo: { populate: { ogImage: true } },
+					blocks: {
+						on: {
+							"blocks.hero": { populate: { backgroundImage: true } },
+							"blocks.gallery": { populate: { images: true } },
+							"blocks.image-block": { populate: { image: true } },
+							"blocks.cards": {
+								populate: { items: { populate: { image: true } } },
+							},
+							"blocks.accordion": { populate: { items: true } },
+							"blocks.text-block": { populate: "*" },
+							"blocks.cta": { populate: "*" },
+							"blocks.video-embed": { populate: "*" },
 						},
-						"blocks.accordion": { populate: { items: true } },
-						"blocks.text-block": { populate: "*" },
-						"blocks.cta": { populate: "*" },
-						"blocks.video-embed": { populate: "*" },
 					},
 				},
 			},
-		},
-		{ encodeValuesOnly: true },
-	);
-	const response: StrapiResponse<Page> = await fetchAPI(`/pages?${query}`, {
-		draft,
-		locale,
-	});
-	return response.data[0] || null;
+			{ encodeValuesOnly: true },
+		);
+		const response: StrapiResponse<Page> = await fetchAPI(`/pages?${query}`, {
+			draft,
+			locale,
+		});
+		return response.data[0] || null;
+	} catch (err) {
+		console.error("[getPageBySlug] error:", err);
+		return null;
+	}
 }
 
 export async function getAllPages(locale = "fr"): Promise<Page[]> {
-	const query = qs.stringify({ fields: ["title", "slug"] }, { encodeValuesOnly: true });
-	const response: StrapiResponse<Page> = await fetchAPI(`/pages?${query}`, {
-		locale,
-	});
-	return response.data;
+	try {
+		const query = qs.stringify({ fields: ["title", "slug"] }, { encodeValuesOnly: true });
+		const response: StrapiResponse<Page> = await fetchAPI(`/pages?${query}`, {
+			locale,
+		});
+		return response.data;
+	} catch (err) {
+		console.error("[getAllPages] error:", err);
+		return [];
+	}
 }
 
 export async function getGlobal(locale = "fr"): Promise<Global | null> {
@@ -322,40 +332,50 @@ export async function getContactPage(locale = "fr"): Promise<ContactPage | null>
 }
 
 export async function getArticles(locale = "fr"): Promise<ArticleCard[]> {
-	const query = qs.stringify(
-		{ fields: ["title", "slug"], populate: { coverImage: true } },
-		{ encodeValuesOnly: true },
-	);
-	const response: StrapiResponse<ArticleCard> = await fetchAPI(`/articles?${query}`, { locale });
-	return response.data;
+	try {
+		const query = qs.stringify(
+			{ fields: ["title", "slug"], populate: { coverImage: true } },
+			{ encodeValuesOnly: true },
+		);
+		const response: StrapiResponse<ArticleCard> = await fetchAPI(`/articles?${query}`, { locale });
+		return response.data;
+	} catch (err) {
+		console.error("[getArticles] error:", err);
+		return [];
+	}
 }
 
 export async function getArticleBySlug(
 	slug: string,
 	{ draft = false, locale = "fr" }: { draft?: boolean; locale?: string } = {},
 ): Promise<Article | null> {
-	const query = qs.stringify(
-		{
-			filters: { slug: { $eq: slug } },
-			populate: {
-				coverImage: true,
-				content: {
-					on: {
-						"blocks.hero": { populate: { backgroundImage: true } },
-						"blocks.gallery": { populate: { images: true } },
-						"blocks.image-block": { populate: { image: true } },
-						"blocks.accordion": { populate: { items: true } },
-						"blocks.text-block": { populate: "*" },
-						"blocks.cta": { populate: "*" },
-						"blocks.video-embed": { populate: "*" },
+	try {
+		const query = qs.stringify(
+			{
+				filters: { slug: { $eq: slug } },
+				populate: {
+					coverImage: true,
+					content: {
+						on: {
+							"blocks.hero": { populate: { backgroundImage: true } },
+							"blocks.gallery": { populate: { images: true } },
+							"blocks.image-block": { populate: { image: true } },
+							"blocks.accordion": { populate: { items: true } },
+							"blocks.text-block": { populate: "*" },
+							"blocks.cta": { populate: "*" },
+							"blocks.video-embed": { populate: "*" },
+						},
 					},
 				},
 			},
-		},
-		{ encodeValuesOnly: true },
-	);
-	const response: StrapiResponse<Article> = await fetchAPI(`/articles?${query}`, { draft, locale });
-	return response.data[0] || null;
+			{ encodeValuesOnly: true },
+		);
+		const response: StrapiResponse<Article> = await fetchAPI(`/articles?${query}`, { draft, locale });
+		return response.data[0] || null;
+	} catch (err) {
+		console.error("[getArticleBySlug] error:", err);
+		return null;
+	}
 }
 
 export function getStrapiImageUrl(url: string): string {
