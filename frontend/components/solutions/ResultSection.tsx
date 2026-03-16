@@ -1,7 +1,7 @@
-import type { ResultSection } from "@/type";
-import { Section } from "../ui/Section";
+import { Section } from "@/components/ui/Section";
+import type { ResultSection as ResultSectionType } from "@/type";
 
-export function ResultSectionBlock({ title, items }: ResultSection) {
+export function ResultSection({ title, items }: ResultSectionType) {
 	if (!items || items.length === 0) return null;
 
 	return (

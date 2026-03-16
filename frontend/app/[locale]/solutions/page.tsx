@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/layout/PageHero";
-import { HowItWorksSplitBlock } from "@/components/solutions/HowItWorksSplitBlock";
-import { HowItWorksStepsBlock } from "@/components/solutions/HowItWorksStepsBlock";
+import { PageHero } from "@/components/ui/PageHero";
+import { HowItWorksSplit } from "@/components/solutions/HowItWorksSplit";
+import { HowItWorksSteps } from "@/components/solutions/HowItWorksSteps";
 import { PricingSection } from "@/components/solutions/PricingSection";
-import { ResultSectionBlock } from "@/components/solutions/ResultSectionBlock";
-import { SolutionIntroBlock } from "@/components/solutions/SolutionIntroBlock";
+import { ResultSection } from "@/components/solutions/ResultSection";
+import { SolutionIntro } from "@/components/solutions/SolutionIntro";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
@@ -41,21 +41,21 @@ export default async function SolutionsPage({ params }: LocalePageProps) {
 			{/* DRAW Scan */}
 			{page.draw_scan_intro && (
 				<Section className="md:py-5">
-					<SolutionIntroBlock {...page.draw_scan_intro} imageRight />
+					<SolutionIntro {...page.draw_scan_intro} imageRight />
 				</Section>
 			)}
 			{page.draw_scan_how && (
-				<HowItWorksSplitBlock {...page.draw_scan_how} cardBackground="accent-peach" />
+				<HowItWorksSplit {...page.draw_scan_how} cardBackground="accent-peach" />
 			)}
 
 			{/* Atelier ALIGN */}
 			{page.atelier_align_intro && (
 				<Section>
-					<SolutionIntroBlock {...page.atelier_align_intro} imageRight background="secondary" />
+					<SolutionIntro {...page.atelier_align_intro} imageRight background="secondary" />
 				</Section>
 			)}
-			{page.atelier_align_how && <HowItWorksStepsBlock {...page.atelier_align_how} />}
-			{page.atelier_align_result && <ResultSectionBlock {...page.atelier_align_result} />}
+			{page.atelier_align_how && <HowItWorksSteps {...page.atelier_align_how} />}
+			{page.atelier_align_result && <ResultSection {...page.atelier_align_result} />}
 
 			{/* Galerie photos */}
 			{page.gallery_images && page.gallery_images.length > 0 && (

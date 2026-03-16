@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRenderer";
-import { PageHero } from "@/components/layout/PageHero";
+import { PageHero } from "@/components/ui/PageHero";
 import { PreviewBanner } from "@/components/layout/PreviewBanner";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getArticleBySlug, getGlobal } from "@/lib/strapi";

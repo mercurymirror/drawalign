@@ -1,12 +1,12 @@
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { cn } from "@/lib/utils";
-import type { SolutionIntro } from "@/type";
+import type { SolutionIntro as SolutionIntroType } from "@/type";
 
-type Props = SolutionIntro & {
+type Props = SolutionIntroType & {
 	imageRight?: boolean;
 };
 
-export function SolutionIntroBlock({
+export function SolutionIntro({
 	name,
 	logo,
 	image,

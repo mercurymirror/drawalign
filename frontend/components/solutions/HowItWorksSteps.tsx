@@ -1,7 +1,7 @@
 import { Section } from "@/components/ui/Section";
-import type { HowItWorksSteps } from "@/type";
+import type { HowItWorksSteps as HowItWorksStepsType } from "@/type";
 
-export function HowItWorksStepsBlock({ title, steps }: HowItWorksSteps) {
+export function HowItWorksSteps({ title, steps }: HowItWorksStepsType) {
 	if (!steps || steps.length === 0) return null;
 
 	return (

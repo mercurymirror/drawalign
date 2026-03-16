@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { PageHero } from "@/components/layout/PageHero";
+import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { TeamMemberCard } from "@/components/ui/TeamMemberCard";

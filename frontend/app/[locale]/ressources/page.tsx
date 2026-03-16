@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ArticleListBlock } from "@/components/blocks/ArticleListBlock";
-import { PageHero } from "@/components/layout/PageHero";
+import { PageHero } from "@/components/ui/PageHero";
 import { buildPageMetadata } from "@/lib/metadata";
 import { getGlobal, getRessourcesPage } from "@/lib/strapi";
 import type { LocalePageProps } from "@/type";

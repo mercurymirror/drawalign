@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/layout/PageHero";
+import { PageHero } from "@/components/ui/PageHero";
 import { FullWidthImage } from "@/components/ui/FullWidthImage";
 import { HighlightCard } from "@/components/ui/HighlightCard";
 import { Quote } from "@/components/ui/Quote";

@@ -33,6 +33,11 @@
     },
     "navItems": {
       "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "component": "elements.nav-item",
       "repeatable": true
     },

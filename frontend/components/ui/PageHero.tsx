@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Section } from "../ui/Section";
+import { Section } from "./Section";
 
 type Props = {
 	eyebrow?: string | null;

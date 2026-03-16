@@ -115,9 +115,9 @@ export async function getGlobal(locale = "fr"): Promise<Global | null> {
 			{ encodeValuesOnly: true },
 		);
 		const response: StrapiSingleResponse<Global> = await fetchAPI(`/global?${query}`, { locale });
-		return response.data;
+		return response.data ?? (locale !== "fr" ? getGlobal("fr") : null);
 	} catch {
-		return null;
+		return locale !== "fr" ? getGlobal("fr") : null;
 	}
 }
 

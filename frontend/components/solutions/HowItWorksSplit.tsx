@@ -1,14 +1,14 @@
-import { RichTextRenderer } from "@/components/blocks/TextBlock";
 import { FeatureList } from "@/components/ui/FeatureList";
+import { RichTextRenderer } from "@/components/ui/RichTextRenderer";
 import { Section } from "@/components/ui/Section";
 import { bgClass } from "@/lib/variants";
-import type { HowItWorksSplit } from "@/type";
+import type { HowItWorksSplit as HowItWorksSplitType } from "@/type";
 
-type Props = HowItWorksSplit & {
+type Props = HowItWorksSplitType & {
 	cardBackground?: "primary" | "secondary" | "accent-peach";
 };
 
-export function HowItWorksSplitBlock({
+export function HowItWorksSplit({
 	title,
 	description,
 	card_title,

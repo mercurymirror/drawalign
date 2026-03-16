@@ -803,7 +803,12 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    navItems: Schema.Attribute.Component<'elements.nav-item', true>;
+    navItems: Schema.Attribute.Component<'elements.nav-item', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     navVariant: Schema.Attribute.Enumeration<['header', 'sidebar']> &
       Schema.Attribute.DefaultTo<'header'>;
     publishedAt: Schema.Attribute.DateTime;
