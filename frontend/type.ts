@@ -75,6 +75,7 @@ export type ImageBlock = {
 	id: number;
 	image: StrapiImage | null;
 	caption: string | null;
+	full_width: boolean | null;
 };
 
 export type AccordionItem = {

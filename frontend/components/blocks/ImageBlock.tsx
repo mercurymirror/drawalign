@@ -2,18 +2,27 @@ import Image from "next/image";
 import { getStrapiImageUrl } from "@/lib/strapi";
 import type { ImageBlock as ImageBlockType } from "@/type";
 
-export function ImageBlock({ image, caption }: ImageBlockType) {
+export function ImageBlock({ image, caption, full_width }: ImageBlockType) {
   if (!image) return null;
 
+  const isFullWidth = full_width !== false;
+
   return (
-    <figure className="mx-auto w-full max-w-6xl px-8 py-8">
-      <div className="relative overflow-hidden rounded-xl">
+    <figure className="mx-auto w-full max-w-5xl px-8 py-8">
+      <div
+        className={
+          isFullWidth
+            ? "relative overflow-hidden rounded-xl"
+            : "flex justify-center"
+        }
+      >
         <Image
           src={getStrapiImageUrl(image.url)}
           alt={image.alternativeText ?? caption ?? ""}
           width={image.width}
           height={image.height}
-          className="h-auto w-full object-cover"
+          className={isFullWidth ? "h-auto w-full object-cover" : "rounded-xl"}
+          style={isFullWidth ? undefined : { maxWidth: "100%" }}
         />
       </div>
       {caption && (
