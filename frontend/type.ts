@@ -392,7 +392,6 @@ export type MethodeHldbPage = {
 	documentId: string;
 	seo: Seo | null;
 	hero: PageHeroData | null;
-	hero_diagram: StrapiImage | null;
 	logo_hldb: StrapiImage | null;
 	diagram_left: DiagramCard | null;
 	diagram_right: DiagramCard | null;
@@ -406,7 +405,6 @@ export type MethodeHldbPage = {
 	maturity_text: string | null;
 	highlight_title: string | null;
 	highlight_text: string | null;
-	maturity_cta: CtaLink | null;
 	maturity_image: StrapiImage | null;
 };
 

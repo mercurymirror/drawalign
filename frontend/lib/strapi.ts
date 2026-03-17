@@ -199,7 +199,6 @@ export async function getMethodeHldbPage(locale = "fr"): Promise<MethodeHldbPage
 				populate: {
 					seo: { populate: { ogImage: true } },
 					hero: true,
-					hero_diagram: true,
 					logo_hldb: true,
 					diagram_left: true,
 					diagram_right: true,
@@ -207,7 +206,6 @@ export async function getMethodeHldbPage(locale = "fr"): Promise<MethodeHldbPage
 					theoretical_items: true,
 					section3_cta: true,
 					fullWidthImage: true,
-					maturity_cta: true,
 					maturity_image: true,
 				},
 			},

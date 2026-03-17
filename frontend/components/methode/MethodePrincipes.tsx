@@ -5,7 +5,12 @@ import { Section } from "@/components/ui/Section";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { cn } from "@/lib/utils";
 import { bgClass } from "@/lib/variants";
-import type { ConvictionItem, CtaLink, DiagramCard, StrapiImage as StrapiImageType } from "@/type";
+import type {
+  ConvictionItem,
+  CtaLink,
+  DiagramCard,
+  StrapiImage as StrapiImageType,
+} from "@/type";
 
 type Props = {
   logo_hldb: StrapiImageType | null;
@@ -81,12 +86,15 @@ export function MethodePrincipes({
   return (
     <Section variant="lg" className="flex flex-col gap-10 pb-12 md:pb-20">
       {(left || right || logo_hldb) && (
-        <div className="relative grid grid-cols-1 items-center gap-3 pt-3 md:grid-cols-[1fr_auto_1fr]">
-          <div className="absolute inset-0 inset-x-0 z-0 m-auto hidden h-px w-80 -translate-y-1/2 bg-primary md:block lg:w-113.5" />
-          <div className="relative z-10 flex justify-end">
+        <div className="relative grid grid-cols-1 items-center gap-3 pt-3 lg:grid-cols-[1fr_auto_1fr]">
+          {/* ligne horizontale desktop */}
+          <div className="absolute inset-0 z-0 m-auto hidden h-px w-80 -translate-y-1/2 bg-primary lg:block lg:w-113.5" />
+          {/* ligne verticale mobile/tablet */}
+          <div className="absolute top-[10%] bottom-[10%] left-1/2 z-0 w-px -translate-x-1/2 bg-primary lg:hidden" />
+          <div className="relative z-10 flex justify-center lg:justify-end">
             {left && <DiagramCardBlock card={left} />}
           </div>
-          <div className="relative mx-auto flex aspect-square items-center justify-center lg:w-107.5">
+          <div className="relative mx-auto flex aspect-square w-64 items-center justify-center lg:w-107.5">
             <Image
               src="/methode/circle.svg"
               alt=""
@@ -122,11 +130,15 @@ export function MethodePrincipes({
             />
             {logo_hldb && (
               <div className="relative z-10 aspect-square w-[48%]">
-                <StrapiImage image={logo_hldb} fill className="object-contain" />
+                <StrapiImage
+                  image={logo_hldb}
+                  fill
+                  className="object-contain"
+                />
               </div>
             )}
           </div>
-          <div className="relative z-10">
+          <div className="relative z-10 flex justify-center lg:block">
             {right && <DiagramCardBlock card={right} />}
           </div>
         </div>

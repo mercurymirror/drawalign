@@ -920,18 +920,6 @@ export interface ApiMethodeHldbMethodeHldb extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    diagram_center_text: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    diagram_center_title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     diagram_left: Schema.Attribute.Component<'methode.diagram-card', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -956,12 +944,6 @@ export interface ApiMethodeHldbMethodeHldb extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
-    hero_diagram: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     highlight_text: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -979,7 +961,7 @@ export interface ApiMethodeHldbMethodeHldb extends Struct.SingleTypeSchema {
       'oneToMany',
       'api::methode-hldb.methode-hldb'
     >;
-    maturity_cta: Schema.Attribute.Component<'elements.cta-link', false> &
+    logo_hldb: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

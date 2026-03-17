@@ -1,13 +1,12 @@
 import { SplitCard } from "@/components/ui/SplitCard";
 import { StrapiImage } from "@/components/ui/StrapiImage";
-import type { CtaLink, StrapiImage as StrapiImageType } from "@/type";
+import type { StrapiImage as StrapiImageType } from "@/type";
 
 type Props = {
   maturity_title: string | null;
   maturity_text: string | null;
   highlight_title: string | null;
   highlight_text: string | null;
-  maturity_cta: CtaLink | null;
   maturity_image: StrapiImageType | null;
 };
 
@@ -29,7 +28,7 @@ export function MethodeMaturity({
       {/* Droite : titre + texte + CTA */}
       <div className="flex flex-col justify-between gap-8 bg-primary p-14">
         <div className="flex flex-col gap-6">
-          <h2 className="lg:text-40 text-2xl text-white md:text-4xl">
+          <h2 className="text-2xl text-white md:text-4xl lg:text-40">
             {maturity_title}
           </h2>
           {maturity_text && (
