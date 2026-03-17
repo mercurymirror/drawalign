@@ -39,8 +39,7 @@ export default async function MethodeHldbPage({ params }: LocalePageProps) {
 				</Section>
 			)}
 			<MethodePrincipes
-				center_title={page.diagram_center_title}
-				center_text={page.diagram_center_text}
+				logo_hldb={page.logo_hldb}
 				left={page.diagram_left}
 				right={page.diagram_right}
 				principles_title={page.principles_title}

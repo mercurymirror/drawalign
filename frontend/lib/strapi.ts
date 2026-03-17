@@ -200,6 +200,7 @@ export async function getMethodeHldbPage(locale = "fr"): Promise<MethodeHldbPage
 					seo: { populate: { ogImage: true } },
 					hero: true,
 					hero_diagram: true,
+					logo_hldb: true,
 					diagram_left: true,
 					diagram_right: true,
 					principles_items: true,

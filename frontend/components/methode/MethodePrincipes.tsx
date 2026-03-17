@@ -2,13 +2,13 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
+import { StrapiImage } from "@/components/ui/StrapiImage";
 import { cn } from "@/lib/utils";
 import { bgClass } from "@/lib/variants";
-import type { ConvictionItem, CtaLink, DiagramCard } from "@/type";
+import type { ConvictionItem, CtaLink, DiagramCard, StrapiImage as StrapiImageType } from "@/type";
 
 type Props = {
-  center_title: string | null;
-  center_text: string | null;
+  logo_hldb: StrapiImageType | null;
   left: DiagramCard | null;
   right: DiagramCard | null;
   principles_title: string | null;
@@ -29,7 +29,7 @@ function DiagramCardBlock({ card }: { card: DiagramCard }) {
       <div className="flex flex-col gap-3">
         <p className="font-medium text-[19px] leading-tight">{card.title}</p>
         {card.subtitle && (
-          <p className="text-sm tracking-tight text-[#E9E9E9] leading-tight lg:text-lg">
+          <p className="text-[#E9E9E9] text-sm leading-tight tracking-tight lg:text-lg">
             {card.subtitle}
           </p>
         )}
@@ -60,8 +60,7 @@ function ItemList({ items }: { items: ConvictionItem[] }) {
 }
 
 export function MethodePrincipes({
-  center_title,
-  center_text,
+  logo_hldb,
   left,
   right,
   principles_title,
@@ -73,7 +72,7 @@ export function MethodePrincipes({
   if (
     !left &&
     !right &&
-    !center_title &&
+    !logo_hldb &&
     !principles_items?.length &&
     !theoretical_items?.length
   )
@@ -81,7 +80,7 @@ export function MethodePrincipes({
 
   return (
     <Section variant="lg" className="flex flex-col gap-10 pb-12 md:pb-20">
-      {(left || right || center_title) && (
+      {(left || right || logo_hldb) && (
         <div className="relative grid grid-cols-1 items-center gap-3 pt-3 md:grid-cols-[1fr_auto_1fr]">
           <div className="absolute inset-0 inset-x-0 z-0 m-auto hidden h-px w-80 -translate-y-1/2 bg-primary md:block lg:w-113.5" />
           <div className="relative z-10 flex justify-end">
@@ -121,18 +120,11 @@ export function MethodePrincipes({
               style={{ bottom: "16%", left: "5%" }}
               aria-hidden="true"
             />
-            <div className="relative z-10 flex aspect-square w-[48%] flex-col items-center justify-center gap-1 rounded-full bg-foreground px-4 text-center">
-              {center_title && (
-                <p className="font-medium text-sm text-white leading-tight md:text-xl">
-                  {center_title}
-                </p>
-              )}
-              {center_text && (
-                <p className="px-6 text-[10px] text-white leading-normal">
-                  {center_text}
-                </p>
-              )}
-            </div>
+            {logo_hldb && (
+              <div className="relative z-10 aspect-square w-[48%]">
+                <StrapiImage image={logo_hldb} fill className="object-contain" />
+              </div>
+            )}
           </div>
           <div className="relative z-10">
             {right && <DiagramCardBlock card={right} />}
@@ -144,7 +136,7 @@ export function MethodePrincipes({
           {principles_items?.length ? (
             <Card variant="light" className="flex flex-col gap-8">
               {principles_title && (
-                <h2 className="text-2xl uppercase font-medium md:text-3xl">
+                <h2 className="font-medium text-2xl uppercase md:text-3xl">
                   {principles_title}
                 </h2>
               )}
@@ -155,7 +147,7 @@ export function MethodePrincipes({
           {theoretical_items?.length ? (
             <Card variant="light" className="flex flex-col gap-8">
               {theoretical_title && (
-                <h2 className="text-2xl uppercase font-medium md:text-3xl">
+                <h2 className="font-medium text-2xl uppercase md:text-3xl">
                   {theoretical_title}
                 </h2>
               )}

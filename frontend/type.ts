@@ -393,8 +393,7 @@ export type MethodeHldbPage = {
 	seo: Seo | null;
 	hero: PageHeroData | null;
 	hero_diagram: StrapiImage | null;
-	diagram_center_title: string | null;
-	diagram_center_text: string | null;
+	logo_hldb: StrapiImage | null;
 	diagram_left: DiagramCard | null;
 	diagram_right: DiagramCard | null;
 	principles_title: string | null;
