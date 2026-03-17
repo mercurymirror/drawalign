@@ -12,8 +12,12 @@
     },
     "badge_variant": {
       "type": "enumeration",
-      "enum": ["primary", "secondary", "accent"],
-      "default": "primary"
+      "default": "primary",
+      "enum": [
+        "primary",
+        "secondary",
+        "accent"
+      ]
     },
     "title": {
       "type": "string"
@@ -24,7 +28,20 @@
       "repeatable": true
     },
     "revelation": {
-      "type": "text"
+      "type": "text",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "show_revelation"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "show_revelation": {
+      "type": "boolean"
     }
   }
 }

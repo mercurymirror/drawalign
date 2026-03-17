@@ -240,6 +240,7 @@ export interface ExpertisesSolutionStep extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'primary'>;
     items: Schema.Attribute.Component<'elements.list-item', true>;
     revelation: Schema.Attribute.Text;
+    show_revelation: Schema.Attribute.Boolean;
     title: Schema.Attribute.String;
   };
 }

@@ -25,9 +25,12 @@ export function HowItWorksSteps({ title, steps }: HowItWorksStepsType) {
                 {step.items.map((item) => (
                   <li
                     key={item.id}
-                    className="pl-4 text-sm lg:text-[19px] leading-tight"
+                    className="pl-4 text-sm leading-tight lg:text-[19px]"
                   >
-                    <BoldPrefixText text={item.text} prefixClassName="font-medium" />
+                    <BoldPrefixText
+                      text={item.text}
+                      prefixClassName="font-medium"
+                    />
                   </li>
                 ))}
               </ol>
