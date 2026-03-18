@@ -163,3 +163,68 @@ body {
     @apply text-sm leading-normal md:text-lg;
   }
 }
+
+/* Stagger entrance */
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.stagger-card {
+  opacity: 0;
+}
+[data-visible="true"] .stagger-card {
+  animation: stagger-in 1400ms cubic-bezier(0.25, 0.46, 0.75, 1) both;
+}
+[data-visible="true"] .stagger-card-bento {
+  animation: stagger-in 700ms cubic-bezier(0.25, 0.46, 0.75, 1) both;
+}
+.stagger-card-bento {
+  opacity: 0;
+}
+.bento-card-ready {
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.75, 1), box-shadow 400ms ease-out;
+}
+.bento-card-ready:hover {
+  transform: translateY(-2px) scale(1.002);
+  box-shadow: 0 10px 15px -2px rgba(0, 0, 0, 0.15);
+}
+/* Orbital animation */
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.orbit-wrapper {
+  animation: orbit-cw 25s linear infinite;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-wrapper { animation: none; }
+}
+
+/* Hero entrance */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-animate {
+  --delay: 0ms;
+  animation: fade-in 600ms ease-out var(--delay) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-card {
+    opacity: 1;
+  }
+  [data-visible="true"] .stagger-card {
+    animation: none;
+  }
+  .hero-animate {
+    animation: none;
+  }
+}

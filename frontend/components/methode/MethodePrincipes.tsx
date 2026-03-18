@@ -110,24 +110,24 @@ export function MethodePrincipes({
                 aria-hidden="true"
               />
             </div>
-            <Image
-              src="/methode/circle-inside1.svg"
-              alt=""
-              width={56}
-              height={56}
-              className="absolute"
-              style={{ top: "12%", right: "6%" }}
-              aria-hidden="true"
-            />
-            <Image
-              src="/methode/circle-inside2.svg"
-              alt=""
-              width={38}
-              height={38}
-              className="absolute"
-              style={{ bottom: "16%", left: "5%" }}
-              aria-hidden="true"
-            />
+            <div className="orbit-wrapper absolute inset-0" aria-hidden="true">
+              <Image
+                src="/methode/circle-inside1.svg"
+                alt=""
+                width={56}
+                height={56}
+                className="absolute"
+                style={{ top: "12%", right: "6%" }}
+              />
+              <Image
+                src="/methode/circle-inside2.svg"
+                alt=""
+                width={38}
+                height={38}
+                className="absolute"
+                style={{ bottom: "16%", left: "5%" }}
+              />
+            </div>
             {logo_hldb && (
               <div className="relative z-10 aspect-square w-[48%]">
                 <StrapiImage

@@ -109,19 +109,6 @@ export function HomeHero({
   const bubblePositions = isMobile ? BUBBLE_POSITIONS_MOBILE : BUBBLE_POSITIONS;
 
   useEffect(() => {
-    function handleOrientation(e: DeviceOrientationEvent) {
-      setLeaving(false);
-      setOffset({
-        x: Math.max(-1, Math.min(1, (e.gamma ?? 0) / 30)),
-        y: Math.max(-1, Math.min(1, (e.beta ?? 0) / 30)),
-      });
-    }
-    window.addEventListener("deviceorientation", handleOrientation);
-    return () =>
-      window.removeEventListener("deviceorientation", handleOrientation);
-  }, []);
-
-  useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 

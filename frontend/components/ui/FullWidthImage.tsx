@@ -6,10 +6,12 @@ import type { StrapiImage } from "@/type";
 export function FullWidthImage({
 	image,
 	maxHeight = "75vh",
+	priority = false,
 	className,
 }: {
 	image: StrapiImage;
 	maxHeight?: string;
+	priority?: boolean;
 	className?: string;
 }) {
 	return (
@@ -20,6 +22,7 @@ export function FullWidthImage({
 						src={getStrapiImageUrl(image.url)}
 						alt={image.alternativeText ?? ""}
 						fill
+						priority={priority}
 						className="object-cover"
 					/>
 				</div>

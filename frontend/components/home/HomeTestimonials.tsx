@@ -1,50 +1,58 @@
 "use client";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { cn } from "@/lib/utils";
 import type { TestimonialsSection } from "@/type";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function HomeTestimonials({ title, eyebrow, items }: TestimonialsSection) {
 	const triggerRef = useRef<HTMLElement>(null);
 	const trackRef = useRef<HTMLDivElement>(null);
 	const [centered, setCentered] = useState(false);
 
+	const mmRef = useRef<{ revert: () => void } | null>(null);
+
 	useEffect(() => {
-		const mm = gsap.matchMedia();
+		const trigger = triggerRef.current;
+		const track = trackRef.current;
 
-		mm.add("(min-width: 768px)", () => {
-			const trigger = triggerRef.current;
-			const track = trackRef.current;
-			if (!trigger || !track) return;
+		async function init() {
+			const { gsap } = await import("gsap");
+			const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+			gsap.registerPlugin(ScrollTrigger);
 
-			if (track.scrollWidth <= window.innerWidth) {
-				setCentered(true);
-				return;
-			}
+			const mm = gsap.matchMedia();
+			mmRef.current = mm;
 
-			const RIGHT_PAD = 64;
-			const totalScroll = track.scrollWidth - window.innerWidth + RIGHT_PAD;
+			mm.add("(min-width: 768px)", () => {
+				if (!trigger || !track) return;
 
-			gsap.to(track, {
-				x: -totalScroll,
-				ease: "none",
-				scrollTrigger: {
-					trigger,
-					pin: true,
-					scrub: 1,
-					start: "top 10%",
-					end: `+=${totalScroll}`,
-				},
+				if (track.scrollWidth <= window.innerWidth) {
+					setCentered(true);
+					return;
+				}
+
+				const RIGHT_PAD = 64;
+				const totalScroll = track.scrollWidth - window.innerWidth + RIGHT_PAD;
+
+				gsap.to(track, {
+					x: -totalScroll,
+					ease: "none",
+					scrollTrigger: {
+						trigger,
+						pin: true,
+						scrub: 1,
+						start: "top 10%",
+						end: `+=${totalScroll}`,
+					},
+				});
 			});
-		});
+		}
 
-		return () => mm.revert();
+		init();
+
+		return () => mmRef.current?.revert();
 	}, []);
 
 	return (

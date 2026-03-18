@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/Section";
+import { StaggerGrid } from "@/components/ui/StaggerGrid";
 import { StrapiImage } from "@/components/ui/StrapiImage";
 import { cn } from "@/lib/utils";
 import type { ExpertisesSection } from "@/type";
@@ -9,11 +10,12 @@ type Props = ExpertisesSection & { className?: string };
 export function ThreeColCards({ items, cta, className }: Props) {
   return (
     <Section variant="md" className={cn("bg-white", className)}>
-      <div className="grid gap-10 md:grid-cols-3">
-        {items.map((item) => (
+      <StaggerGrid className="grid gap-10 md:grid-cols-3">
+        {items.map((item, index) => (
           <div
             key={item.id}
-            className="flex flex-col gap-4 border-l pl-5 lg:gap-8 lg:px-8"
+            className="stagger-card flex flex-col gap-4 border-l pl-5 lg:gap-8 lg:px-8"
+            style={{ animationDelay: `${index * 70}ms` }}
           >
             {item.icon && (
               <StrapiImage
@@ -36,7 +38,7 @@ export function ThreeColCards({ items, cta, className }: Props) {
             )}
           </div>
         ))}
-      </div>
+      </StaggerGrid>
 
       {cta && (
         <div className="mt-12 flex justify-center">

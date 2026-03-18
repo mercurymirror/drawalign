@@ -59,7 +59,7 @@ function HighlightBox({
   return (
     <div
       className={cn(
-        "flex flex-col gap-2 rounded-xl p-5 lg:ml-27",
+        "bento-card-ready flex flex-col gap-2 rounded-xl p-5 lg:ml-27",
         bgClass[variant],
         className,
       )}

@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { FeatureList } from "@/components/ui/FeatureList";
 import { Section } from "@/components/ui/Section";
+import { StaggerGrid } from "@/components/ui/StaggerGrid";
 import { cn } from "@/lib/utils";
 import { bgClass } from "@/lib/variants";
 import type { ClientCase } from "@/type";
@@ -15,16 +16,18 @@ type Props = {
 
 export function ClientCaseList({ items, onSelect }: Props) {
   return (
-    <Section variant="compact" className="bg-accent-peach pt-0">
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+    <Section variant="full" className="bg-accent-peach pt-0">
+      <StaggerGrid className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {items.map((item, index) => (
           <Fragment key={item.id}>
             {/* Colored card */}
             <div
               className={cn(
-                "flex flex-col gap-8 rounded-2xl p-8 lg:p-15",
+                "stagger-card-bento flex flex-col gap-8 rounded-2xl p-8 lg:p-15",
                 bgClass[item.background],
               )}
+              style={{ animationDelay: `${index * 2 * 300}ms` }}
+              onAnimationEnd={(e) => e.currentTarget.classList.replace("stagger-card-bento", "bento-card-ready")}
             >
               <h3 className="text-3xl text-white tracking-tighter lg:text-40">
                 {item.short_title ?? item.title}
@@ -44,7 +47,11 @@ export function ClientCaseList({ items, onSelect }: Props) {
             </div>
 
             {/* White card */}
-            <div className="flex flex-col gap-8 rounded-2xl bg-white p-8 lg:p-12">
+            <div
+              className="stagger-card-bento flex flex-col gap-8 rounded-2xl bg-white p-8 lg:p-12"
+              style={{ animationDelay: `${(index * 2 + 1) * 300}ms` }}
+              onAnimationEnd={(e) => e.currentTarget.classList.replace("stagger-card-bento", "bento-card-ready")}
+            >
               {item.objectives && item.objectives.length > 0 && (
                 <div className="flex flex-col gap-6">
                   <h4 className="text-2xl">Objectifs</h4>
@@ -52,7 +59,7 @@ export function ClientCaseList({ items, onSelect }: Props) {
                     {item.objectives.map((o) => (
                       <li
                         key={o.id}
-                        className="text-sm lg:text-[15px] leading-tight"
+                        className="text-sm leading-tight lg:text-[15px]"
                       >
                         {o.text}
                       </li>
@@ -78,7 +85,7 @@ export function ClientCaseList({ items, onSelect }: Props) {
             </div>
           </Fragment>
         ))}
-      </div>
+      </StaggerGrid>
     </Section>
   );
 }
