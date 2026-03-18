@@ -38,7 +38,9 @@ function NumberedSection({
           {title}
         </h4>
       </div>
-      {children && <div className="ml-10 flex flex-col gap-6">{children}</div>}
+      {children && (
+        <div className="flex flex-col gap-6 md:ml-10">{children}</div>
+      )}
     </div>
   );
 }
@@ -63,7 +65,7 @@ function HighlightBox({
       )}
     >
       <p className="font-medium text-white text-xs uppercase">{label}</p>
-      <p className="whitespace-pre-line text-base text-white leading-normal">
+      <p className="whitespace-pre-line text-base text-white leading-tight">
         {text}
       </p>
     </div>
@@ -221,9 +223,11 @@ export function ClientCaseDetails({
           {item.results_metrics && item.results_metrics.length > 0 && (
             <ul className="flex flex-col gap-3">
               {item.results_metrics.map((m) => (
-                <li key={m.id} className="flex gap-1">
-                  <span className="text-base text-foreground">{m.label}</span>
-                  <span className="flex items-center gap-1 text-base">
+                <li key={m.id} className="flex flex-col gap-1 md:flex-row">
+                  <span className="text-foreground text-sm leading-tight md:text-base">
+                    {m.label}
+                  </span>
+                  <span className="flex items-center gap-1 text-sm md:text-base">
                     {m.before && (
                       <span className="text-muted-foreground">{m.before}</span>
                     )}
@@ -242,7 +246,7 @@ export function ClientCaseDetails({
           {item.results_benefit && (
             <div className="flex flex-col gap-4">
               <p className="font-medium text-lg">Bénéfice concret :</p>
-              <p className="whitespace-pre-line text-base text-muted-foreground leading-normal">
+              <p className="whitespace-pre-line text-base text-muted-foreground leading-tight">
                 {item.results_benefit}
               </p>
             </div>

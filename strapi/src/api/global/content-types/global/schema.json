@@ -59,7 +59,9 @@
     "teamPhoto": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "logo": {
       "type": "media",
@@ -72,6 +74,18 @@
       "allowedTypes": [
         "images",
         "files"
+      ]
+    },
+    "square_logo_icon": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
       ]
     }
   }

@@ -100,6 +100,7 @@ export async function getGlobal(locale = "fr"): Promise<Global | null> {
 					seo: { populate: { ogImage: true } },
 					navItems: true,
 					logo: true,
+					square_logo_icon: true,
 					footer: {
 						populate: {
 							logo: true,

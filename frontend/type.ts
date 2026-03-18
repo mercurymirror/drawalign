@@ -168,6 +168,7 @@ export type CtaBannerData = {
 export type Global = {
 	siteName: string | null;
 	logo: StrapiImage | null;
+	square_logo_icon: StrapiImage | null;
 	teamPhoto: StrapiImage | null;
 	navVariant: "header" | "sidebar" | null;
 	seo: Seo | null;
