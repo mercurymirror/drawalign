@@ -28,7 +28,7 @@ export function TeamMemberCard({
         {text && <p className="text-sm leading-none lg:text-2xl">{text}</p>}
         {cta && (
           <div className="mt-auto">
-            <Button href={cta.href} variant="foreground" size="sm" arrow>
+            <Button href={`mailto:${cta.href}`} variant="foreground" size="sm" arrow>
               {cta.label}
             </Button>
           </div>
