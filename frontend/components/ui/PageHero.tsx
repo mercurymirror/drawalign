@@ -11,7 +11,7 @@ type Props = {
 export function PageHero({ eyebrow, title, subtitle, className }: Props) {
   return (
     <Section
-      variant="md"
+      variant="full"
       className={cn(
         "w-full bg-primary py-10 text-white md:py-16 lg:py-20",
         className,

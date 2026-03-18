@@ -1,0 +1,14 @@
+{
+  "kind": "singleType",
+  "collectionName": "mentions_legales",
+  "info": {
+    "singularName": "mentions-legale",
+    "pluralName": "mentions-legales",
+    "displayName": "Mentions légales"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

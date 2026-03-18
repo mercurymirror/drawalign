@@ -907,6 +907,34 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMentionsLegaleMentionsLegale
+  extends Struct.SingleTypeSchema {
+  collectionName: 'mentions_legales';
+  info: {
+    displayName: 'Mentions l\u00E9gales';
+    pluralName: 'mentions-legales';
+    singularName: 'mentions-legale';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentions-legale.mentions-legale'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMethodeHldbMethodeHldb extends Struct.SingleTypeSchema {
   collectionName: 'methode_hldbs';
   info: {
@@ -1134,6 +1162,34 @@ export interface ApiPartenairePartenaire extends Struct.SingleTypeSchema {
       'home.expertises-section',
       false
     >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPolitiqueDeConfidentialitePolitiqueDeConfidentialite
+  extends Struct.SingleTypeSchema {
+  collectionName: 'politique_de_confidentialites';
+  info: {
+    displayName: 'Politique de confidentialit\u00E9';
+    pluralName: 'politique-de-confidentialites';
+    singularName: 'politique-de-confidentialite';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::politique-de-confidentialite.politique-de-confidentialite'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1773,9 +1829,11 @@ declare module '@strapi/strapi' {
       'api::expertise.expertise': ApiExpertiseExpertise;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
+      'api::mentions-legale.mentions-legale': ApiMentionsLegaleMentionsLegale;
       'api::methode-hldb.methode-hldb': ApiMethodeHldbMethodeHldb;
       'api::page.page': ApiPagePage;
       'api::partenaire.partenaire': ApiPartenairePartenaire;
+      'api::politique-de-confidentialite.politique-de-confidentialite': ApiPolitiqueDeConfidentialitePolitiqueDeConfidentialite;
       'api::ressource.ressource': ApiRessourceRessource;
       'api::solution.solution': ApiSolutionSolution;
       'api::team-member.team-member': ApiTeamMemberTeamMember;

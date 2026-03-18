@@ -14,7 +14,7 @@ export function RichTextRenderer({ nodes }: { nodes: RichTextNode[] }) {
           if (node.strikethrough) content = <s>{content}</s>;
           if (node.code)
             content = (
-              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-sm dark:bg-zinc-800">
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-sm">
                 {content}
               </code>
             );
@@ -71,7 +71,7 @@ export function RichTextRenderer({ nodes }: { nodes: RichTextNode[] }) {
             return (
               <blockquote
                 key={i}
-                className="mb-4 border-zinc-300 border-l-4 pl-4 text-zinc-600 italic dark:border-zinc-600 dark:text-zinc-400"
+                className="mb-4 border-zinc-300 border-l-4 pl-4 text-primary italic"
               >
                 {children}
               </blockquote>
@@ -80,7 +80,7 @@ export function RichTextRenderer({ nodes }: { nodes: RichTextNode[] }) {
             return (
               <pre
                 key={i}
-                className="mb-4 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm dark:bg-zinc-900"
+                className="mb-4 overflow-x-auto rounded-lg bg-zinc-100 p-4 font-mono text-sm"
               >
                 {children}
               </pre>
@@ -101,7 +101,7 @@ function Heading({
   children: React.ReactNode;
 }) {
   const classes = cn(
-    "mb-4 font-bold tracking-tight",
+    "mb-4 tracking-tight",
     level === 1 && "text-4xl",
     level === 2 && "text-3xl",
     level === 3 && "text-2xl",
