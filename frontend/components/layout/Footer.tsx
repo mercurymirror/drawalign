@@ -105,7 +105,7 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
             {/* Col 3 : Mentions légales */}
             {footer.legalLinks?.length ? (
               <nav className="space-y-2">
-                {footer.legalLinks.map((link) => (
+                {footer.legalLinks.slice(0, 2).map((link) => (
                   <Link
                     key={link.id}
                     href={link.href}
@@ -114,13 +114,26 @@ export function Footer({ footer, siteName, sitemapItems }: Props) {
                     {link.label}
                   </Link>
                 ))}
-                <div />
-                {footer.logo_esf && (
-                  <StrapiImage
-                    image={footer.logo_esf}
-                    alt={footer.logo_esf?.alternativeText || name}
-                    className="h-8 w-auto"
-                  />
+                {(footer.legalLinks[2] || footer.logo_esf) && (
+                  <div className="mt-4 inline-flex flex-col gap-2">
+                    {footer.legalLinks[2] && (
+                      <Link
+                        href={footer.legalLinks[2].href}
+                        className="text-sm transition-colors hover:text-muted-foreground"
+                      >
+                        {footer.legalLinks[2].label}
+                      </Link>
+                    )}
+                    {footer.logo_esf && (
+                      <div className="rounded-md bg-white p-2">
+                        <StrapiImage
+                          image={footer.logo_esf}
+                          alt={footer.logo_esf?.alternativeText || name}
+                          className="h-8 w-auto"
+                        />
+                      </div>
+                    )}
+                  </div>
                 )}
               </nav>
             ) : (
