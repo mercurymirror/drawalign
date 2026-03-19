@@ -15,7 +15,7 @@ export function ThreeColCards({ items, cta, className }: Props) {
           <div
             key={item.id}
             className="stagger-card flex flex-col gap-4 border-l pl-5 lg:gap-8 lg:px-8"
-            style={{ animationDelay: `${index * 70}ms` }}
+            style={{ animationDelay: `${index * 300}ms` }}
           >
             {item.icon && (
               <StrapiImage
