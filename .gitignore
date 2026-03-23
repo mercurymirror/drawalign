@@ -4,3 +4,4 @@ maquettes/
 
 # OS
 .DS_Store
+.vercel

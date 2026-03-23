@@ -17,8 +17,14 @@ export default {
     theme: {
       light: {
         colors: {
-          primary600: "#0066CC",
-          primary700: "#0052A3",
+          primary100: "#ECEAFF",
+          primary200: "#C4BCFF",
+          primary500: "#6450FF",
+          primary600: "#6450FF",
+          primary700: "#140D4A",
+          buttonNeutral0: "#ffffff",
+          buttonPrimary500: "#6450FF",
+          buttonPrimary600: "#140D4A",
         },
       },
     },

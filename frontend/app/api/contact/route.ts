@@ -9,10 +9,8 @@ export async function POST(req: Request) {
 	}
 
 	const { error } = await resend.emails.send({
-		// TODO prod : remplacer par "Formulaire Drawalign <contact@draw-align.com>" une fois le domaine draw-align.com vérifié sur resend.com/domains
-		from: "Formulaire Drawalign <onboarding@resend.dev>",
-		// TODO prod : remplacer par "contact@draw-align.com"
-		to: "paradisepapers.dev@gmail.com",
+		from: "Formulaire Drawalign <contact@draw-align.com>",
+		to: "contact@draw-align.com",
 		replyTo: email,
 		subject: `Nouveau message de ${firstName} ${lastName}`,
 		text: `Nom : ${lastName}\nPrénom : ${firstName}\nEmail : ${email}\n\n${message}`,
