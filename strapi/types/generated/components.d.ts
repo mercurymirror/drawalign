@@ -474,7 +474,12 @@ export interface SharedFooter extends Struct.ComponentSchema {
     logo: Schema.Attribute.Media<'images'>;
     logo_esf: Schema.Attribute.Media<'images' | 'files'>;
     socialLinks: Schema.Attribute.Component<'elements.social-link', true>;
-    tagline: Schema.Attribute.String;
+    tagline: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 

@@ -7,7 +7,12 @@
   "options": {},
   "attributes": {
     "tagline": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "address": {
       "type": "text"
